@@ -1,0 +1,54 @@
+Twitter search（暂定）
+
+
+Type：
+	Array of 用户
+	Array of twitters
+	Graph结构？链表结构？
+
+
+用户ADT:user class
+	state variable:用户性别，年龄，地区
+
+
+
+推特ADT:推特class
+	uses:用户ADT
+	state variable：推特的评论数，赞数，转发，内容，tag，时间，发送用户
+
+
+爬虫Libary：
+	从twitter直接获得信息
+
+
+
+读取AO:从文件里读取数据
+	uses：（也许）爬虫Libary，用户ADT，推特ADT，types
+
+
+
+排列/筛选AO：
+	uses：ADT，types
+
+
+
+搜索AO：
+	uses：排列，筛选
+
+
+对数据进行其他方面的处理：
+	
+
+
+implementation：
+	uses：搜索AO
+
+
+
+GUI：图形操作界面
+	uses：implementation
+	
+
+
+
+	
