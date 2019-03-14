@@ -42,10 +42,14 @@ public class search {
 		twitterADT[] result = {};
 		for(int i = 0; i < set.length; i ++) {
 			if(userEligible(set[i],n,g,r)) {
-		/**		for(int j = 0; j < user.) {
-					if (during(,a,b))
-						result += ;
-				} **/
+				
+				//tList??? @_@
+				for(int j = 0; j < user.tList.length; j++) {
+					if (during(user.tList[j],a,b))
+						result.add(user.tList[j]);
+				} 
+				
+				
 			}
 		}
 		
