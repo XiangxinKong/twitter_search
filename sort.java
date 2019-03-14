@@ -2,7 +2,7 @@ package pkg2xb3;
 
 public class sort {
 
-	public static void mergeSort(Comparable[] a, int n) {
+	public static void sort(Comparable[] a, int n) {
 		if (n < 2) {
 			return;
 		}
@@ -15,8 +15,8 @@ public class sort {
 		for (int i = mid; i < n; i++) {
 			r[i - mid] = a[i];
 		}
-		mergeSort(l, mid);
-		mergeSort(r, n - mid);
+		sort(l, mid);
+		sort(r, n - mid);
 
 		merge(a, l, r, mid, n - mid);
 	}
