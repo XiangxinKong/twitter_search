@@ -44,9 +44,9 @@ public class search {
 			if(userEligible(set[i],n,g,r)) {
 				
 				//tList??? @_@
-				for(int j = 0; j < user.tList.length; j++) {
-					if (during(user.tList[j],a,b))
-						result.add(user.tList[j]);
+				for(int j = 0; j < set.tList.length; j++) {
+					if (during(set.tList[j],a,b))
+						result.add(set.tList[j]);
 				} 
 				
 				
@@ -54,7 +54,7 @@ public class search {
 		}
 		
 		sort sorter = new sort();
-		
+		sorter.sort(result,result.length);
 		
 		return result;
 	}
