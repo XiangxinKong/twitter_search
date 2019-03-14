@@ -1,4 +1,7 @@
-package ADT;
+package pkg2xb3;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class userADT {
 	
@@ -6,6 +9,7 @@ public class userADT {
 	private String gender;
 	private int age;
 	private String region;
+	private List<twitterADT> tlist = new ArrayList<twitterADT>();
 	
 	public userADT(String id, String gender, int age, String region) {
 		this.id = id;
@@ -31,5 +35,11 @@ public class userADT {
 		return this.region;
 	}
 	
+	public List<twitterADT> gettlist(){
+		return this.tlist;
+	}
 	
+	public void puttlist(twitterADT key) {
+		this.tlist.add(key);
+	}
 }
