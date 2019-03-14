@@ -85,10 +85,10 @@ public class gui extends javax.swing.JFrame {
         jLabel2.setText("Region:");
 
         fromDate.setFont(new java.awt.Font("宋体", 0, 24)); // NOI18N
-        fromDate.setText("2016/01/01");
+        fromDate.setText("2009/09/01");
 
         toDate.setFont(new java.awt.Font("宋体", 0, 24)); // NOI18N
-        toDate.setText("2016/03/01");
+        toDate.setText("2010/01/30");
 
         jLabel3.setFont(new java.awt.Font("宋体", 0, 24)); // NOI18N
         jLabel3.setText("To:");
