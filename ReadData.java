@@ -70,12 +70,13 @@ public class ReadData {
 				/* 
 				 * add to adt
 				 */
-				twitterADT element = twitterADT(date, tag, language, time, region, likenumber);
+				twitterADT element = new twitterADT(date, tag, language, time, region, likenumber);
 				userList.add(element);
 			}
-			return userList;
+			
 		}
 		catch (FileNotFoundException e) { e.printStackTrace(); }
+		return userList;
 	}
 	
 	
