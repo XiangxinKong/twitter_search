@@ -32,10 +32,16 @@ public class search {
         return "";
     }
     
-    public static ArrayList<twitterADT> filter(String lang,int Date, String region, int time)throws IOException, ParseException{
+    public static ArrayList<twitterADT> filter(String lang,int Begin_date, int End_date, String region, int Begin_time, int End_time)throws IOException, ParseException{
         ArrayList<twitterADT> tweet;
+        ArrayList<twitterADT> out_tweet = new ArrayList<twitterADT>();
         tweet=LoadUsers("src/javaapplication2/test.json");
-        return null;
+        for (int i = 0; i < tweet.size(); i++) {
+        	if (Begin_date <= Integer.valueOf(tweet.get(i).getDate()) && Integer.valueOf(tweet.get(i).getDate()) <= End_date && Integer.valueOf(tweet.get(i).getTime()) >= Begin_time && Integer.valueOf(tweet.get(i).getTime()) <= End_time && tweet.get(i).getLanguage().equals(lang) && tweet.get(i).getRegion().equals(region)) {
+        		out_tweet.add(tweet.get(i));
+        	}
+        }
+        return out_tweet;
     }
 
 }
