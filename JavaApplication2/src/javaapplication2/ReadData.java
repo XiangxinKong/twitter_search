@@ -107,7 +107,7 @@ public class ReadData {
 	
 	
 //C:\Users\\user\Desktop\git\twitter_search\JavaApplication2\src\javaapplication2\test.json
-	public static void main(String args[]) throws IOException, ParseException{
+	public static void mainn(String args[]) throws IOException, ParseException{
             ArrayList<twitterADT> tweet;
             tweet=LoadUsers("src/javaapplication2/test.json");
             System.out.println("S");

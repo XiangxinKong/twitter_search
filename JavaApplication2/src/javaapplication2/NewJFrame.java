@@ -4,8 +4,12 @@
  * and open the template in the editor.
  */
 package javaapplication2;
+import java.io.IOException;
 import javax.swing.JOptionPane;
 import javax.swing.*;
+
+import static javaapplication2.search.search;
+import org.json.simple.parser.ParseException;
 /**
  *
  * @author user
@@ -37,7 +41,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         toLabel = new javax.swing.JLabel();
         FromLabel = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        search = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         year = new javax.swing.JComboBox();
         month = new javax.swing.JComboBox();
@@ -101,11 +105,11 @@ public class NewJFrame extends javax.swing.JFrame {
         FromLabel.setFont(new java.awt.Font("宋体", 0, 36)); // NOI18N
         FromLabel.setText("From：");
 
-        jButton1.setFont(new java.awt.Font("Sitka Heading", 1, 60)); // NOI18N
-        jButton1.setText("SEARCH");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        search.setFont(new java.awt.Font("Sitka Heading", 1, 60)); // NOI18N
+        search.setText("SEARCH");
+        search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                searchActionPerformed(evt);
             }
         });
 
@@ -147,7 +151,7 @@ public class NewJFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(search, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
@@ -230,7 +234,7 @@ public class NewJFrame extends javax.swing.JFrame {
                                 .addGap(23, 23, 23)
                                 .addComponent(timeTo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -277,10 +281,22 @@ if(!timeConstrain.isSelected()){
         }        // TODO add your handling code here:
     }//GEN-LAST:event_timeConstrainMouseReleased
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
+        String reg=(String)region.getSelectedItem();
+        String lang=(String)language.getSelectedItem();
+        int timeBegin=0;
+        int timeEnd=0;
+        
         String result="Result\n\nFrom \tto\n\n";
-        JOptionPane.showMessageDialog(null, result);        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        result=result+"Among "+lang+" speaker from "+reg+"\n\n The most popular tag is:\n\n";
+        String popularTag="";
+        try{
+        popularTag=search("",0,0,"",0,0);
+        }catch(IOException|ParseException e){
+            System.out.println(e.getMessage());
+        }
+        JOptionPane.showMessageDialog(null, result+popularTag);        // TODO add your handling code here:
+    }//GEN-LAST:event_searchActionPerformed
 
     private void popularMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_popularMouseReleased
         // TODO add your handling code here:
@@ -293,7 +309,7 @@ if(!timeConstrain.isSelected()){
     /**
      * @param args the command line arguments
      */
-    public static void mainn(String args[]) {
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -328,7 +344,6 @@ if(!timeConstrain.isSelected()){
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel FromLabel;
     private javax.swing.JComboBox day;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -339,6 +354,7 @@ if(!timeConstrain.isSelected()){
     private javax.swing.JComboBox month;
     private javax.swing.JCheckBox popular;
     private javax.swing.JComboBox region;
+    private javax.swing.JButton search;
     private javax.swing.JCheckBox timeConstrain;
     private javax.swing.JSlider timeFrom;
     private javax.swing.JSlider timeTo;
