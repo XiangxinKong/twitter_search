@@ -6,6 +6,7 @@
 package javaapplication2;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.swing.JOptionPane;
 import javax.swing.*;
@@ -22,6 +23,8 @@ public class NewJFrame extends javax.swing.JFrame {
 	
 	private static ArrayList<twitterADT> tweet = new ArrayList<twitterADT>();
 	
+	private static String[] Region;
+	private static String[] Language;
 
     /**
      * Creates new form NewJFrame
@@ -64,7 +67,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel1.setText("Advanced Twitter Search Engine");
 
         language.setFont(new java.awt.Font("瀹嬩綋", 0, 36)); // NOI18N
-        language.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "All Language", "en", "Chinese", "ja", "Korean", "Russian", "French", "German" }));
+        language.setModel(new javax.swing.DefaultComboBoxModel(Language));
 
         timeFrom.setMaximum(24);
         timeFrom.setPaintLabels(true);
@@ -154,7 +157,8 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel6.setToolTipText("");
 
         region.setFont(new java.awt.Font("瀹嬩綋", 0, 36)); // NOI18N
-        region.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "All region", "USA", "Canada", "Japan", "Russia", "Korea", "Germany" }));
+        
+        region.setModel(new javax.swing.DefaultComboBoxModel(Region));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -360,8 +364,39 @@ if(!timeConstrain.isSelected()){
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-    	
+    	ArrayList<String> regionList = new ArrayList<String>();
+    	ArrayList<String> languageList = new ArrayList<String>();
     	tweet=ReadData.LoadUsers("src/javaapplication2/test.json");
+    	for(int i = 0; i < tweet.size(); i++) {
+    		regionList.add(tweet.get(i).getRegion());
+    		languageList.add(tweet.get(i).getLanguage());
+    		
+    	}
+    	
+    	String[] temp = new String[regionList.size()];
+    	String[] temp_2 = new String[languageList.size()];
+    	
+    	for(int i = 0; i < regionList.size(); i++) {
+    		temp[i] = regionList.get(i);
+    	}
+    	temp = Remove.Remove(temp);
+    	Region = new String[temp.length + 1];
+    	for (int i = 1; i <= temp.length; i++) {
+    		Region[i] = temp[i - 1];
+    	}
+    	Region[0] = "All region";
+    	
+    	for(int i = 0; i < languageList.size(); i++) {
+    		temp_2[i] = languageList.get(i);
+    	}
+    	temp_2 = Remove.Remove(temp_2);
+    	Language = new String[temp_2.length + 1];
+    	for (int i = 1; i <= temp_2.length; i++) {
+    		Language[i] = temp_2[i - 1];
+    	}
+    	Language[0] = "All Language";
+    	
+    	
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
