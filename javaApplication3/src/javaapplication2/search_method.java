@@ -22,23 +22,19 @@ public class search_method {
     public static String search(ArrayList<String> in_tweet_tag)throws IOException, ParseException{
        HashMap<String, Integer> map = new HashMap<String, Integer>();
        
-       
-       
-        
+
         for(int i=0;i<in_tweet_tag.size();i++){
-            System.out.println(in_tweet_tag.get(i));
             if(map.containsKey(in_tweet_tag.get(i))){
                 map.put(in_tweet_tag.get(i), map.get(in_tweet_tag.get(i))+1);
             }else{
-                map.put(in_tweet_tag.get(i),0);
+                map.put(in_tweet_tag.get(i),1);
             }
         }
         
         String top="";
         int num=0;
         for(HashMap.Entry<String, Integer> entry: map.entrySet()){
-            System.out.println(entry.getKey());
-          
+           
             if(entry.getValue()>num){
                 num=entry.getValue();
                 top=entry.getKey();

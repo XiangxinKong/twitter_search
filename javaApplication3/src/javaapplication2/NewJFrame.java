@@ -323,12 +323,10 @@ if(!timeConstrain.isSelected()){
     	if (popular.isSelected())
     		tweet_out = search_method.filter_pop(tweet_out, 10);
     	
-    	for(int i = 0; i < tweet_out.size(); i++) {
-    		System.out.println(tweet_out.get(i).getLikeNum());
-    	}
+    	
     	tagString = search_method.getTagList(tweet_out);
     	
-
+    	
     	String result = "Result\n\nFrom \tto\n\n";
         result=result+"Among "+lang+" speaker from "+reg+"\n\n The most popular tag is:\n\n";
         String popularTag="";
