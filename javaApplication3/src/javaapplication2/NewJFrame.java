@@ -4,9 +4,11 @@
  * and open the template in the editor.
  */
 package javaapplication2;
+import static com.sun.org.apache.xalan.internal.lib.ExsltDynamic.map;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
 import javax.swing.JOptionPane;
 import javax.swing.*;
@@ -25,6 +27,8 @@ public class NewJFrame extends javax.swing.JFrame {
 	
 	private static String[] Region;
 	private static String[] Language;
+        
+        static HashMap<String,String> map;
 
     /**
      * Creates new form NewJFrame
@@ -330,8 +334,9 @@ if(!timeConstrain.isSelected()){
     	
     	tagString = search_method.getTagList(tweet_out);
     	
-    	
-    	String result = "Result\n\nFrom \tto\n\n";
+    	int from=timeFrom.getValue();
+        int to=timeTo.getValue();
+    	String result = "Result\n\nFrom \t"+from+":00 to "+to+":00 \n\n";
         result=result+"Among "+lang+" speaker from "+reg+"\n\n The most popular tag is:\n\n";
         String popularTag="";
         
@@ -359,6 +364,13 @@ if(!timeConstrain.isSelected()){
      * @throws IOException 
      */
     public static void main(String args[]) throws IOException, ParseException {
+        map=new HashMap<String,String>();
+        map.put("English", "en");
+        map.put("Chinese", "cn");
+        map.put("Japanese", "ja");
+        map.put("French", "fr");
+        map.put("Korean", "ko");
+        map.put("German", "ge");
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
