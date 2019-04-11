@@ -2,7 +2,7 @@ package javaapplication2;
 
 public class sort {
 
-	public static void sort(Comparable[] a, int n) {
+	public static void sort(Comparable[] a, int n) {//
 		if (n < 2) {
 			return;
 		}
